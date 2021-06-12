@@ -1,0 +1,45 @@
+.title {
+  padding: 30px 0;
+  color: white;
+  font: 400 36px "Major Mono Display", monospace;
+}
+h2 {
+  color: white;
+  margin: 30px 0;
+  font-weight: 300;
+}
+.input,
+.textArea,
+.button,
+.button {
+  padding: 8px 6px;
+  margin: 4px 0;
+  border: 1px solid black;
+}
+.input,
+.textArea {
+  width: 80vw;
+  color: black;
+}
+.input,
+.button {
+  font-size: 18px;
+}
+.textArea {
+  font-size: 14px;
+}
+.button {
+  padding: 5px 12px;
+}
+.privatePolicy {
+  padding-bottom: 14px;
+}
+@media all and (min-width: 700px) {
+  .title {
+    font-size: calc(24px + 1.75vw);
+  }
+  .input,
+  .textArea {
+    width: 29.4vw;
+  }
+}
