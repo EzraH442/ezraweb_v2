@@ -1,9 +1,11 @@
 import React from "react";
 
 import Header from "../componenents/header";
-
+import Footer from "../componenents/footer";
 import Banner from "../componenents/homepage/banner";
+
 import ThreeColumns from "../componenents/homepage/triple-column";
+import PersonalInfo from "../componenents/homepage/personalinto";
 
 import left from "../images/column2.jpg";
 import right from "../images/right.jpg";
@@ -44,11 +46,8 @@ const HomePage = () => (
                 },
             }}
         />
-
-        <div>
-            <h1>I'm also an IBDP Student at Western Canada High School</h1>
-            <p>So I'm usually very busy</p>
-        </div>
+        <PersonalInfo />
+        <Footer />
     </div>
 );
 

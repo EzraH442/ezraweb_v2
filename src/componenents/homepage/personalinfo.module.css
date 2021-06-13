@@ -1,0 +1,44 @@
+.info {
+  background-color: #cfe8a3;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.info .title {
+  color: black;
+  text-align: center;
+  margin: 40px 0 10px;
+  font: 400 24px "Raleway", sans-serif;
+}
+.description {
+  text-align: center;
+  margin: 20px;
+  font: 400 16px "Raleway", sans-serif;
+  width: 90%;
+}
+.info hr {
+  align-self: stretch;
+  min-height: 1px;
+  background-color: black;
+  width: 90%;
+  margin: 0 5%;
+}
+.date {
+  margin: 20px 0;
+}
+.modifiedColumnHeight {
+  height: fit-content;
+  padding: 20px;
+}
+.postLink {
+  background-color: #86c232;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  margin: 20px 0px;
+  text-decoration: none;
+  transition: background-color 0.5s;
+}
+.postLink:hover {
+  background-color: #61892f;
+}
