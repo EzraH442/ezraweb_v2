@@ -1,8 +1,9 @@
 module.exports = {
     siteMetadata: {
-        title: "Ezraweb 2",
+        title: "Ezra's Website",
     },
     plugins: [
+        "gatsby-transformer-remark",
         {
             resolve: "gatsby-plugin-google-fonts",
             options: {
@@ -12,6 +13,13 @@ module.exports = {
                     "Raleway",
                 ],
                 display: "swap",
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                name: "src",
+                path: `${__dirname}/src/`,
             },
         },
     ],

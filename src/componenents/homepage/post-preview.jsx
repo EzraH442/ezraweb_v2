@@ -17,7 +17,7 @@ export default function PostPreview({
             <img src={image} alt="" />
             <p className={text}>{description}</p>
 
-            <Link to={`../../pages/journals/${link}`} className={postLink}>Full Post</Link>
+            <Link to={link} className={postLink}>Full Post</Link>
             <p className={postDate}>{date}</p>
         </div>
     );

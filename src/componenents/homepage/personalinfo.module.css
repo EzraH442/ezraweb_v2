@@ -2,7 +2,6 @@
   background-color: #cfe8a3;
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
 }
 .info .title {
   color: black;
