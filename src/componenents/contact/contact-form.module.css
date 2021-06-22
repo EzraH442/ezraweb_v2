@@ -5,30 +5,30 @@
 }
 h2 {
   color: white;
-  margin: 30px 0;
+  margin: 15px 0;
   font-weight: 300;
 }
-.input,
-.textArea,
-.button,
-.button {
+input,
+textArea,
+button {
   padding: 8px 6px;
   margin: 4px 0;
   border: 1px solid black;
+  display: block;
 }
-.input,
-.textArea {
+input,
+textArea {
   width: 80vw;
   color: black;
 }
-.input,
-.button {
+input,
+button {
   font-size: 18px;
 }
-.textArea {
+textArea {
   font-size: 14px;
 }
-.button {
+button {
   padding: 5px 12px;
 }
 .privatePolicy {
@@ -38,8 +38,8 @@ h2 {
   .title {
     font-size: calc(24px + 1.75vw);
   }
-  .input,
-  .textArea {
+  input,
+  textArea {
     width: 29.4vw;
   }
 }

@@ -1,34 +1,107 @@
 import React from "react";
-
 import * as styles from "./contact-form.module.css";
 
-export default function ContactForm() {
-    return (
-        <div>
-            <h1 className={styles.title}>contact</h1>
-            <h2>Send me an email: </h2>
-            <form action="https://mtcuuh40qb.execute-api.us-east-1.amazonaws.com/dev" method="post" id="contact-form">
-                <input type="hidden" name="_to" value="7328e5bf4196c078f5d4611363dad301:c8dd8c1f29f7844ca3ab6667c4408ec7cefa9e164037" className={styles.input} />
-                <input type="hidden" name="_recaptcha" id="recaptcha" value="" className={styles.input} />
-                <input type="hidden" name="_redirect" id="redirect" value="https://www.cookiekiller.xyz/success.html" className={styles.input} />
-                <input type="text" name="name" placeholder="Name" required="" className={styles.input} />
-                <br />
-                <input type="email" name="_replyTo" placeholder="Email" required="" className={styles.input} />
-                <br />
-                <textarea type="text" name="message" placeholder="Message" required="" className={`${styles.input} ${styles.textArea}`} />
-                <br />
+const axios = require("axios");
 
-                <button id="send" type="submit" className={styles.button}>Send</button>
-            </form>
+export default class ContactForm extends React.Component {
+    signal = axios.CancelToken.source();
+
+    siteKey = "6Le1iisaAAAAAGW7-lA_PoCubVTHxxOYBJUoc83X";
+
+    catpchaLink = "https://www.google.com/recaptcha/api.js?render=6Le1iisaAAAAAGW7-lA_PoCubVTHxxOYBJUoc83X";
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "",
+            subject: "",
+            email: "",
+            message: "",
+            token: "",
+        };
+    }
+
+    componentDidMount() {
+        const script = document.createElement("script");
+        script.src = this.catpchaLink;
+        document.body.appendChild(script);
+        window.handleSubmit = this.handleSubmit;
+    }
+
+    componentWillUnmount() {
+        this.signal.cancel("Post req cancelled");
+    }
+
+    handleInputChange = (e) => {
+        const { target } = e;
+        const { name, value } = target;
+        this.setState({
+            [name]: value,
+        });
+    }
+
+    handleSubmit = () => {
+        window.grecaptcha.ready(() => {
+            window.grecaptcha
+                .execute(this.siteKey, { action: "submit" })
+                .then((token) => {
+                    this.setState({ token });
+                    const data = JSON.stringify(this.state);
+                    this.submit(data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        });
+    };
+
+    submit(data) {
+        const headers = {
+            Accept: "application/json; charset=utf-8",
+            "Content-Type": "application/json; charset=UTF-8",
+        };
+        console.log(data);
+        axios.post("https://hcj7ux2476.execute-api.us-east-1.amazonaws.com/Prod", data, headers, {
+            cancelToken: this.signal.token,
+        })
+            .then((res) => {
+                console.log(res);
+                if (res.target.status === 200) {
+                    console.log("success");
+                } else {
+                    console.log(`fail, status code: ${res.target.status}`);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    render() {
+        return (
             <div>
+                <h1 className={styles.title}>contact </h1>
+                <h2>Send me an email:</h2>
+                <form>
+                    <input type="text" name="name" onChange={this.handleInputChange} placeholder="Name" />
+                    <input type="text" name="subject" onChange={this.handleInputChange} placeholder="Subject" />
+                    <input type="email" name="email" onChange={this.handleInputChange} placeholder="Your Email" />
+                    <textarea type="text" name="message" onChange={this.handleInputChange} placeholder="Message" />
+                    <button type="submit" data-callback="handleSubmit" className="g-recaptcha" data-size="invisible" data-sitekey={this.siteKey}>Submit</button>
+                </form>
                 <p className={styles.privatePolicy}>
                     This site is protected by reCAPTCHA and the Google
+                    {" "}
                     <a href="https://policies.google.com/privacy">Privacy Policy</a>
+                    {" "}
                     and
+                    {" "}
                     <a href="https://policies.google.com/terms">Terms of Service</a>
+                    {" "}
                     apply.
                 </p>
             </div>
-        </div>
-    );
+
+        );
+    }
 }
