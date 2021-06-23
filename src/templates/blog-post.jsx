@@ -14,7 +14,7 @@ export default function BlogPost({ data, pageContext }) {
     return (
         <div>
             <Header />
-            <Body>
+            <Body backgroundColor="#cfe8a3">
                 <div className={styles.container}>
                     <h1 className={styles.title}>{frontmatter.title}</h1>
                     <p className={styles.date}>{frontmatter.date}</p>
