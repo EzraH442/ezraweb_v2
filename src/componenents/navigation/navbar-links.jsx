@@ -27,7 +27,7 @@ export default function NavbarLinks({ hidden }) {
             <NavLink address="about" text="About" />
             <NavDropdown address="all-journals" text="Journals">
                 <DropdownLink address={`${data.allMarkdownRemark.edges[0].node.fields.slug}`} text="Latest Post" />
-                <DropdownLink address="pages/about" text="Other Dropdown link" />
+                <DropdownLink address="../../all-journals" text="All Posts" />
             </NavDropdown>
             <NavLink address="contact" text="Contact" />
         </nav>

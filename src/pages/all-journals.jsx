@@ -4,23 +4,28 @@ import PropTypes from "prop-types";
 import Header from "../componenents/header";
 import Footer from "../componenents/footer";
 import Body from "../componenents/containers/body";
+import * as styles from "../styles/journals.module.css";
 
 export default function AllJournals({ data }) {
     return (
         <div>
             <Header />
-            <Body>
-                <div>
-                    <h1>All Posts</h1>
-                    <h2>
+            <Body backgroundColor="#cfe8a3">
+                <div className={styles.container}>
+                    <h1 className={styles.title}>All Posts</h1>
+                    <p className={styles.postCount}>
+                        You can find all
+                        {" "}
                         {data.allMarkdownRemark.totalCount}
                         {" "}
-                        Posts
-                    </h2>
+                        posts below:
+                    </p>
+                    <hr className={styles.line} />
                     {data.allMarkdownRemark.edges.map(({ node }) => (
                         <Link
                             to={node.fields.slug}
                             key={node.id}
+                            className={styles.link}
                         >
                             <div>
                                 <h3>

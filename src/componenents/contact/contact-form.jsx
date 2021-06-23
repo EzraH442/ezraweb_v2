@@ -81,7 +81,7 @@ export default class ContactForm extends React.Component {
         return (
             <div>
                 <h1 className={styles.title}>contact </h1>
-                <h2>Send me an email:</h2>
+                <h2 className={styles.subtitle}>Send me an email:</h2>
                 <form>
                     <input type="text" name="name" onChange={this.handleInputChange} placeholder="Name" />
                     <input type="text" name="subject" onChange={this.handleInputChange} placeholder="Subject" />

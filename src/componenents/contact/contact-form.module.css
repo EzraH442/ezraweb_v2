@@ -3,7 +3,7 @@
   color: white;
   font: 400 36px "Major Mono Display", monospace;
 }
-h2 {
+.subtitle {
   color: white;
   margin: 15px 0;
   font-weight: 300;
