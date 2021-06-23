@@ -8,9 +8,7 @@ import { dropdownLink } from "./dropdown.module.css";
 
 export default function DropdownLink({ address, text }) {
     return (
-        <div>
-            <Link to={`../../${address}`} className={dropdownLink}>{text}</Link>
-        </div>
+        <Link to={address} className={dropdownLink}>{text}</Link>
     );
 }
 

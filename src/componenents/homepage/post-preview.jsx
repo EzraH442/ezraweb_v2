@@ -12,7 +12,6 @@ import {
 export default function PostPreview({
     title, date, headline, link, image,
 }) {
-    console.log(image);
     return (
         <div className={`${column} ${modifiedColumnHeight}`}>
             <h3>{title}</h3>
