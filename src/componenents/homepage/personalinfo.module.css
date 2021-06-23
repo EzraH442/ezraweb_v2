@@ -11,9 +11,9 @@
 }
 .description {
   text-align: center;
-  margin: 20px;
   font: 400 16px "Raleway", sans-serif;
   width: 90%;
+  margin: 10px 0;
 }
 .info hr {
   align-self: stretch;
@@ -22,19 +22,24 @@
   width: 90%;
   margin: 0 5%;
 }
+.text {
+  flex: 1 1 300px;
+  margin: 10px 0;
+}
 .date {
-  margin: 20px 0;
+  margin: 15px 5px;
 }
 .modifiedColumnHeight {
   height: fit-content;
   padding: 20px;
 }
 .postLink {
+  display: inline-block;
   background-color: #86c232;
   color: white;
   padding: 12px 20px;
   border-radius: 25px;
-  margin: 20px 0px;
+  margin: 30px 0 10px;
   text-decoration: none;
   transition: background-color 0.5s;
 }

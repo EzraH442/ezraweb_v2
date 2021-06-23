@@ -1,0 +1,18 @@
+.container {
+  margin: 50px 80px;
+}
+.title {
+}
+.content {
+  margin-bottom: 20px;
+}
+.date {
+  margin: 10px;
+}
+.links {
+  margin: 15px 30px;
+  display: inline-block;
+}
+.image {
+  display: block;
+}

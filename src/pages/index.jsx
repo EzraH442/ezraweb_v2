@@ -5,7 +5,7 @@ import Footer from "../componenents/footer";
 import Banner from "../componenents/homepage/banner";
 
 import ThreeColumns from "../componenents/homepage/triple-column";
-import PersonalInfo from "../componenents/homepage/personalinto";
+import PersonalInfo from "../componenents/homepage/personalinfo";
 
 import left from "../images/column2.jpg";
 import right from "../images/right.jpg";

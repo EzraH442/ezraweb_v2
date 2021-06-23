@@ -1,24 +1,34 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import Header from "../componenents/header";
 import Body from "../componenents/containers/body";
 import Footer from "../componenents/footer";
+import * as styles from "./blog-post.module.css";
 
 export default function BlogPost({ data, pageContext }) {
     const { frontmatter, html } = data.markdownRemark;
     const { nextSlug, previousSlug } = pageContext;
+    const image = getImage(frontmatter.featuredImage);
     return (
         <div>
             <Header />
             <Body>
-                <div>
-                    <h1>{frontmatter.title}</h1>
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
-                    <p>{frontmatter.date}</p>
-
-                    <Link to={nextSlug}>Next Post</Link>
-                    <Link to={previousSlug}>Previous Post</Link>
+                <div className={styles.container}>
+                    <h1 className={styles.title}>{frontmatter.title}</h1>
+                    <p className={styles.date}>{frontmatter.date}</p>
+                    <div className={styles.content} dangerouslySetInnerHTML={{ __html: html }} />
+                    <GatsbyImage image={image} alt="" className={styles.image} />
+                    <Link to={nextSlug} className={styles.links}>
+                        {"<<< "}
+                        Next Post
+                    </Link>
+                    <Link to={previousSlug} className={styles.links}>
+                        Previous Post
+                        {" "}
+                        {">>>"}
+                    </Link>
                 </div>
             </Body>
             <Footer />
@@ -37,6 +47,7 @@ BlogPost.propTypes = {
             frontmatter: PropTypes.shape({
                 title: PropTypes.string.isRequired,
                 date: PropTypes.string.isRequired,
+                featuredImage: PropTypes.any.isRequired,
             }).isRequired,
             html: PropTypes.any.isRequired,
         }),
@@ -50,6 +61,14 @@ export const query = graphql`
       frontmatter {
         title
         date
+        featuredImage {
+            childImageSharp {     
+                gatsbyImageData(
+                    width: 800
+                    placeholder: BLURRED
+                )
+            }
+        }
       }
     }
   }

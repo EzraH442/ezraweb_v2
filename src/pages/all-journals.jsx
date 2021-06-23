@@ -20,8 +20,9 @@ export default function AllJournals({ data }) {
                     {data.allMarkdownRemark.edges.map(({ node }) => (
                         <Link
                             to={node.fields.slug}
+                            key={node.id}
                         >
-                            <div key={node.id}>
+                            <div>
                                 <h3>
                                     {node.frontmatter.title}
                                     {" - "}

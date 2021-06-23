@@ -1,9 +1,16 @@
 module.exports = {
     siteMetadata: {
-        title: "Ezra's Website",
+        title: "ezra's Website",
     },
     plugins: [
-        "gatsby-transformer-remark",
+        {
+            resolve: "gatsby-transformer-remark",
+            options: {
+                footnotes: true,
+                gfm: false,
+                plugins: [],
+            },
+        },
         {
             resolve: "gatsby-plugin-google-fonts",
             options: {
@@ -19,8 +26,23 @@ module.exports = {
             resolve: "gatsby-source-filesystem",
             options: {
                 name: "src",
-                path: `${__dirname}/src/`,
+                path: `${__dirname}/src`,
             },
         },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/src/posts`,
+            },
+        },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                path: `${__dirname}/src/images`,
+            },
+        },
+        "gatsby-plugin-image",
+        "gatsby-plugin-sharp",
+        "gatsby-transformer-sharp",
     ],
 };

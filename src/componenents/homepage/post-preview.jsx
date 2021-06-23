@@ -3,38 +3,35 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Link } from "gatsby";
-
-import { column, text } from "./triple-column.module.css";
-import { modifiedColumnHeight, postLink, date as postDate } from "./personalinfo.module.css";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { column } from "./triple-column.module.css";
+import {
+    modifiedColumnHeight, postLink, date as postDate, text,
+} from "./personalinfo.module.css";
 
 export default function PostPreview({
-    title, date, description, link, image,
+    title, date, headline, link, image,
 }) {
+    console.log(image);
     return (
         <div className={`${column} ${modifiedColumnHeight}`}>
             <h3>{title}</h3>
-
-            <img src={image} alt="" />
-            <p className={text}>{description}</p>
-
-            <Link to={link} className={postLink}>Full Post</Link>
             <p className={postDate}>{date}</p>
+            <p className={text}>{headline}</p>
+            <GatsbyImage image={image} alt="" />
+            <Link to={link} className={postLink}>Full Post</Link>
         </div>
     );
 }
 
 PostPreview.propTypes = {
-    title: PropTypes.string,
-    date: PropTypes.string,
-    description: PropTypes.string,
-    link: PropTypes.string,
-    image: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    headline: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    image: PropTypes.any,
 };
 
 PostPreview.defaultProps = {
-    title: "a post title",
-    date: "a date",
-    description: "a short exerpt from the post",
-    link: "the link to the post",
     image: "the image",
 };
