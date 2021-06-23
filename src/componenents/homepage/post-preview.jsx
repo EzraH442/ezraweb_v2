@@ -17,7 +17,7 @@ export default function PostPreview({
             <h3>{title}</h3>
             <p className={postDate}>{date}</p>
             <p className={text}>{headline}</p>
-            <GatsbyImage image={image} alt="" />
+            {image ? <GatsbyImage image={image} alt="" /> : ""}
             <Link to={link} className={postLink}>Full Post</Link>
         </div>
     );
