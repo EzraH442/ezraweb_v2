@@ -4,6 +4,8 @@ import Header from "../componenents/header";
 
 import Body from "../componenents/containers/body";
 
+import Footer from "../componenents/footer";
+
 import ContactForm from "../componenents/contact/contact-form";
 
 import polarBearPicture from "../images/polar-bear-1.jpg";
@@ -20,6 +22,7 @@ export default function ContactPage() {
                     <img src={polarBearPicture} alt="a polar bear" className={styles.picture} />
                 </div>
             </Body>
+            <Footer />
         </div>
 
     );
