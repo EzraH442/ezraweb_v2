@@ -13,11 +13,14 @@ export default class ContactForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: "",
-            subject: "",
-            email: "",
-            message: "",
-            token: "",
+            formData: {
+                name: "",
+                subject: "",
+                email: "",
+                message: "",
+                token: "",
+            },
+            isSubmitDisabled: false,
         };
     }
 
@@ -35,18 +38,26 @@ export default class ContactForm extends React.Component {
     handleInputChange = (e) => {
         const { target } = e;
         const { name, value } = target;
-        this.setState({
-            [name]: value,
+        this.setState((prevState) => {
+            const formData = { ...prevState.formData };
+            formData[name] = value;
+            return { formData };
         });
     }
 
     handleSubmit = () => {
+        this.setState({ isSubmitDisabled: true });
         window.grecaptcha.ready(() => {
             window.grecaptcha
                 .execute(this.siteKey, { action: "submit" })
                 .then((token) => {
-                    this.setState({ token });
-                    const data = JSON.stringify(this.state);
+                    this.setState((prevState) => {
+                        const formData = { ...prevState.formData };
+                        formData.token = token;
+                        return { formData };
+                    });
+                    const { formData } = this.state;
+                    const data = JSON.stringify(formData);
                     this.submit(data);
                 })
                 .catch((err) => {
@@ -78,6 +89,7 @@ export default class ContactForm extends React.Component {
     }
 
     render() {
+        const { isSubmitDisabled } = this.state;
         return (
             <div>
                 <h1 className={styles.title}>contact </h1>
@@ -87,7 +99,7 @@ export default class ContactForm extends React.Component {
                     <input type="text" name="subject" onChange={this.handleInputChange} placeholder="Subject" />
                     <input type="email" name="email" onChange={this.handleInputChange} placeholder="Your Email" />
                     <textarea type="text" name="message" onChange={this.handleInputChange} placeholder="Message" />
-                    <button type="submit" data-callback="handleSubmit" className="g-recaptcha" data-size="invisible" data-sitekey={this.siteKey}>Submit</button>
+                    <button type="submit" data-callback="handleSubmit" className="g-recaptcha" data-size="invisible" data-sitekey={this.siteKey} disabled={isSubmitDisabled}>Submit</button>
                 </form>
                 <p className={styles.privatePolicy}>
                     This site is protected by reCAPTCHA and the Google
