@@ -20,6 +20,7 @@ input,
 textArea {
   width: 80vw;
   color: black;
+  resize: vertical;
 }
 input,
 button {
@@ -33,6 +34,8 @@ button {
 }
 .privatePolicy {
   padding-bottom: 14px;
+  font-size: 11px;
+  max-width: 80%;
 }
 @media all and (min-width: 700px) {
   .title {
