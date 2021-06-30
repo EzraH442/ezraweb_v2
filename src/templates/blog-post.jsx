@@ -17,7 +17,9 @@ export default function BlogPost({ data, pageContext }) {
             <SEO
                 title={frontmatter.title}
                 description={frontmatter.headline}
-                image={frontmatter.featuredImage.childImageSharp.gatsbyImageData.images.sizes}
+                image={frontmatter.featuredImage
+                    ? frontmatter.featuredImage.childImageSharp.gatsbyImageData.images.sizes
+                    : null}
                 pathname={slug}
                 article
             />
