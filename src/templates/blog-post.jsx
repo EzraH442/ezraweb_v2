@@ -34,8 +34,7 @@ export default function BlogPost({ data, pageContext }) {
                     </Link>
                     <Link to={previousSlug} className={styles.links}>
                         Previous Post
-                        {" "}
-                        {">>>"}
+                        {" >>>"}
                     </Link>
                 </div>
             </Body>
