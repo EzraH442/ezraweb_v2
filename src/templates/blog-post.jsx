@@ -2,6 +2,7 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
+import SEO from "../componenents/seo";
 import Header from "../componenents/header";
 import Body from "../componenents/containers/body";
 import Footer from "../componenents/footer";
@@ -9,10 +10,17 @@ import * as styles from "./blog-post.module.css";
 
 export default function BlogPost({ data, pageContext }) {
     const { frontmatter, html } = data.markdownRemark;
-    const { nextSlug, previousSlug } = pageContext;
+    const { slug, nextSlug, previousSlug } = pageContext;
     const image = getImage(frontmatter.featuredImage);
     return (
         <div>
+            <SEO
+                title={frontmatter.title}
+                description={frontmatter.headline}
+                image={frontmatter.featuredImage.childImageSharp.gatsbyImageData.images.sizes}
+                pathname={slug}
+                article
+            />
             <Header />
             <Body backgroundColor="#cfe8a3">
                 <div className={styles.container}>
@@ -41,6 +49,7 @@ BlogPost.propTypes = {
     pageContext: PropTypes.shape({
         nextSlug: PropTypes.string.isRequired,
         previousSlug: PropTypes.string.isRequired,
+        slug: PropTypes.string.isRequired,
     }).isRequired,
     data: PropTypes.shape({
         markdownRemark: PropTypes.shape({
@@ -48,6 +57,7 @@ BlogPost.propTypes = {
                 title: PropTypes.string.isRequired,
                 date: PropTypes.string.isRequired,
                 featuredImage: PropTypes.any.isRequired,
+                headline: PropTypes.any.isRequired,
             }).isRequired,
             html: PropTypes.any.isRequired,
         }),
@@ -61,6 +71,7 @@ export const query = graphql`
       frontmatter {
         title
         date
+        headline
         featuredImage {
             childImageSharp {     
                 gatsbyImageData(

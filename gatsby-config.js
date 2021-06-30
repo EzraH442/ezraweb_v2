@@ -1,6 +1,8 @@
 module.exports = {
     siteMetadata: {
         title: "ezra's Website",
+        titleTemplate: "Ezra's Website | %s",
+        url: "https://wwww.ezrahuang.xyz",
     },
     plugins: [
         {
@@ -44,5 +46,6 @@ module.exports = {
         "gatsby-plugin-image",
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
+        "gatsby-plugin-react-helmet",
     ],
 };
