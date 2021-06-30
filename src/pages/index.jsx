@@ -1,5 +1,6 @@
 import React from "react";
 
+import SEO from "../componenents/seo";
 import Header from "../componenents/header";
 import Footer from "../componenents/footer";
 import Banner from "../componenents/homepage/banner";
@@ -13,6 +14,11 @@ import summit from "../images/summit.jpg";
 
 const HomePage = () => (
     <div>
+        <SEO
+            title="Home"
+            description="Ezra's Website Homepage!"
+            pathname=""
+        />
         <Header />
         <Banner />
         <ThreeColumns

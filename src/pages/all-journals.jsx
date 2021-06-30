@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import PropTypes from "prop-types";
+import SEO from "../componenents/seo";
 import Header from "../componenents/header";
 import Footer from "../componenents/footer";
 import Body from "../componenents/containers/body";
@@ -9,6 +10,11 @@ import * as styles from "../styles/journals.module.css";
 export default function AllJournals({ data }) {
     return (
         <div>
+            <SEO
+                title="All posts"
+                description="All of Ezra's Journal Posts"
+                pathname="all-journals"
+            />
             <Header />
             <Body backgroundColor="#cfe8a3">
                 <div className={styles.container}>

@@ -2,7 +2,7 @@ module.exports = {
     siteMetadata: {
         title: "ezra's Website",
         titleTemplate: "Ezra's Website | %s",
-        siteUrl: "https://wwww.ezrahuang.xyz",
+        siteUrl: "https://wwww.ezrahuang.xyz", // TODO verify this is correct
     },
     plugins: [
         {
