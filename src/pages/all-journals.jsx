@@ -3,8 +3,8 @@ import { graphql, Link } from "gatsby";
 import PropTypes from "prop-types";
 import SEO from "../componenents/seo";
 import Header from "../componenents/header";
-import Footer from "../componenents/footer";
 import Body from "../componenents/containers/body";
+import Footer from "../componenents/footer";
 import * as styles from "../styles/journals.module.css";
 
 export default function AllJournals({ data }) {

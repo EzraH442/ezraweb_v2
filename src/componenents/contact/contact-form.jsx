@@ -67,12 +67,13 @@ export default class ContactForm extends React.Component {
     };
 
     submit(data) {
+        console.log(data);
         const headers = {
             Accept: "application/json; charset=utf-8",
             "Content-Type": "application/json; charset=UTF-8",
         };
         console.log(data);
-        axios.post("https://hcj7ux2476.execute-api.us-east-1.amazonaws.com/Prod", data, headers, {
+        axios.post("https://hcj7ux2476.execute-api.us-east-1.amazonaws.com/production/submit", data, headers, {
             cancelToken: this.signal.token,
         })
             .then((res) => {
